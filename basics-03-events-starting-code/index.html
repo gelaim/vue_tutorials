@@ -23,6 +23,10 @@
       <p>Result: {{ counter }}</p>
       <input type="text" v-on:input="setName($event)"></input>
       <p>{{name}}</p>
+      <form v-on:submit.prevent="submitForm($event)">
+        <input type="text" ></input>
+        <button > sign up</button>
+      </form>
     </section>
   </body>
 </html>

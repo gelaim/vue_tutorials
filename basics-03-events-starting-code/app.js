@@ -7,6 +7,9 @@ const app = Vue.createApp({
       ;
   },
   methods: {
+    submitForm() {
+      console.log("foi")
+    },
     setName(event) {
 
       this.name = event.target.value;
