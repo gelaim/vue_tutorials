@@ -18,9 +18,8 @@
     </header>
     <section id="styling">
       <div
-        class="demo"
+        v-bind:class="boxASelected ? 'demo active' : 'demo' "
         v-on:click="boxSelected('A')"
-        v-bind:style="{borderColor: boxASelected ? 'red' : '#ccc'}"
       ></div>
       <div class="demo" v-on:click="boxSelected('B')"></div>
       <div class="demo" v-on:click="boxSelected('C')"></div>

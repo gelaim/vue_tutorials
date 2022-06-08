@@ -1,6 +1,10 @@
 * {
   box-sizing: border-box;
 }
+.active{
+  border-color: red;
+  background-color: salmon;
+}
 
 html {
   font-family: 'Jost', sans-serif;
