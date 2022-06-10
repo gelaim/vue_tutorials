@@ -24,7 +24,10 @@
         No goals have been added yet - please start adding some!
       </p>
       <ul v-else>
-        <li v-for="(goal,idx) in goals">{{idx+1}} - {{goal }} </li>
+        <li v-for="(goal,idx) in goals" v-on:click="removeGoal(idx)">
+          <p>{{idx+1}} - {{goal }}</p>
+          <input type="text" v-on:click.stop />
+        </li>
       </ul>
     </section>
   </body>
