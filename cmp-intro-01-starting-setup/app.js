@@ -1,14 +1,7 @@
 const app = Vue.createApp({
   data() {
     return {
-      detailsAreVisible: false,
       friends: [
-        {
-          id: "manuel",
-          name: "Manuel lopez",
-          phone: "3242424",
-          email: "manuel@localhost.com",
-        },
         {
           id: "manuela",
           name: "Manuela lopez",
@@ -18,8 +11,34 @@ const app = Vue.createApp({
       ],
     };
   },
+  methods: {},
+});
+app.component("friend-contact", {
+  template: `
+  <li >
+  <h2>{{friend.name}}</h2>
+  <button v-on:click="toggleDetails()">
+    {{ detailsAreVisible ? 'Hide' :' Show'}} Details
+  </button>
+  <ul v-if="detailsAreVisible">
+    <li><strong>Phone:</strong> {{friend.phone}}</li>
+    <li><strong>Email:</strong> {{friend.email}}</li>
+  </ul>
+</li>
+  `,
+  data() {
+    return {
+      friend: {
+        id: "manuel",
+        name: "Manuel lopez",
+        phone: "3242424",
+        email: "manuel@localhost.com",
+      },
+      detailsAreVisible: false,
+    };
+  },
   methods: {
-    toggleDetais() {
+    toggleDetails() {
       this.detailsAreVisible = !this.detailsAreVisible;
     },
   },
