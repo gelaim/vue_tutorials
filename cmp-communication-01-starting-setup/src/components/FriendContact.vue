@@ -7,7 +7,7 @@
     <ul v-if="detailsAreVisible">
       <li>
         <strong>Phone:</strong>
-        {{ phoneNumber }}
+        {{ phoneNumberWithPlus }}
       </li>
       <li>
         <strong>Email:</strong>
@@ -29,6 +29,7 @@ export default {
         phone: "0123 45678 90",
         email: "manuel@localhost.com",
       },
+      phoneNumberWithPlus: "+" + this.phoneNumber,
     };
   },
   methods: {
