@@ -19,7 +19,7 @@ export default {
   data() {
     return {
       activeUser: {
-        name: "Maximilian Schwarzmüller",
+        name: "Thiago Gelaim",
         description: "Site owner and admin",
         role: "admin",
       },
