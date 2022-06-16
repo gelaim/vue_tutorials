@@ -14,6 +14,7 @@
         v-bind:email-address="friend.email"
         v-bind:is-favorite="friend.isFavorite"
         v-on:toggle-favorite="toggleFavoriteStatus"
+        v-on:delete-contact="deleteContact"
       ></friend-contact>
     </ul>
   </section>
@@ -57,6 +58,9 @@ export default {
         isFavorite: false,
       };
       this.friends.push(newFriendContact);
+    },
+    deleteContact(friendID) {
+      this.friends = this.friends.filter((friend) => friend.id !== friendID);
     },
   },
 };

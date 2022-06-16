@@ -15,6 +15,7 @@
         {{ emailAddress }}
       </li>
     </ul>
+    <button v-on:click="deleteFriend">Delete</button>
   </li>
 </template>
 
@@ -40,6 +41,12 @@ export default {
       console.log("id is missing");
       return false;
     },
+    "delete-contact": function (id) {
+      if (id) {
+        return true;
+      }
+      return false;
+    },
   },
   data() {
     return {
@@ -55,6 +62,9 @@ export default {
     toggleFavorite() {
       this.$emit("toggle-favorite", this.id);
       //this.isFavoriteContact = !this.isFavoriteContact;
+    },
+    deleteFriend() {
+      this.$emit("delete-contact", this.id);
     },
   },
 };
