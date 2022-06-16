@@ -5,11 +5,13 @@
     </header>
     <ul>
       <friend-contact
-        name="Thiago"
-        phone-number="34232424"
-        email-address="thiago@example.com"
+        v-for="friend in friends"
+        v-bind:key="friend.id"
+        v-bind:name="friend.name"
+        v-bind:phone-number="friend.phone"
+        v-bind:email-address="friend.email"
+        v-bind:is-favorite="true"
       ></friend-contact>
-      <friend-contact></friend-contact>
     </ul>
   </section>
 </template>
