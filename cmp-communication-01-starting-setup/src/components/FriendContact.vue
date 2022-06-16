@@ -31,6 +31,16 @@ export default {
     emailAddress: { type: String, required: false, default: "@example.com" },
     isFavorite: { type: Boolean },
   },
+  //emits: ["toggle-favorite"],
+  emits: {
+    "toggle-favorite": function (id) {
+      if (id) {
+        return true;
+      }
+      console.log("id is missing");
+      return false;
+    },
+  },
   data() {
     return {
       detailsAreVisible: false,
