@@ -9,7 +9,9 @@
     </button>
     <!--<ActiveGoals v-if="selectedComponent === 'ActiveGoals'"> </ActiveGoals>
     <ManageGoals v-if="selectedComponent === 'ManageGoals'"></ManageGoals>-->
-    <component v-bind:is="selectedComponent"></component>
+    <keep-alive>
+      <component v-bind:is="selectedComponent"></component
+    ></keep-alive>
   </div>
 </template>
 
