@@ -1,6 +1,6 @@
 <template>
   <div>
-    <header><slot name="customHeader"></slot></header>
+    <header><slot name="customHeader"><h2>If you don't have a content, show me!</h2></slot></header>
     <slot></slot>
   </div>
 </template>
@@ -16,7 +16,7 @@ div {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   padding: 1rem;
 }
-section header {
+header {
   display: flex;
   justify-content: space-between;
   align-items: center;
