@@ -1,35 +1,39 @@
 <template>
   <div>
     <TheHeader></TheHeader>
-    <BadgeList></BadgeList>
-    <UserInfo
-      :full-name="activeUser.name"
-      :info-text="activeUser.description"
-      :role="activeUser.role"
-    ></UserInfo
-    ><CourseGoals
-      ><template v-slot="slotProps"
-        ><h2>{{ slotProps.item }}</h2></template
-      ></CourseGoals
-    >
+    <button v-on:click="setSelectedComponent('ActiveGoals')">
+      ActiveGoals
+    </button>
+    <button v-on:click="setSelectedComponent('ManageGoals')">
+      ManageGoals
+    </button>
+    <!--<ActiveGoals v-if="selectedComponent === 'ActiveGoals'"> </ActiveGoals>
+    <ManageGoals v-if="selectedComponent === 'ManageGoals'"></ManageGoals>-->
+    <component v-bind:is="selectedComponent"></component>
   </div>
 </template>
 
 <script>
 import TheHeader from "./components/TheHeader.vue";
-import UserInfo from "./components/UserInfo.vue";
-import BadgeList from "./components/BadgeList.vue";
-import CourseGoals from "./components/CourseGoals.vue";
+import ActiveGoals from "./components/ActiveGoals.vue";
+import ManageGoals from "./components/ManageGoals.vue";
+
 export default {
-  components: { CourseGoals, UserInfo, TheHeader, BadgeList },
+  components: { TheHeader, ActiveGoals, ManageGoals },
   data() {
     return {
+      selectedComponent: "ActiveGoals",
       activeUser: {
         name: "Thiago Gelaim",
         description: "Site owner and admin",
         role: "admin",
       },
     };
+  },
+  methods: {
+    setSelectedComponent(cmp) {
+      this.selectedComponent = cmp;
+    },
   },
 };
 </script>
