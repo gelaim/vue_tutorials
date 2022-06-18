@@ -3,7 +3,7 @@
     <BaseCard>
       <header>
         <h3>{{ title }}</h3>
-        <button>Delete</button>
+        <BaseButton mode="flat">Delete</BaseButton>
       </header>
       <p>{{ description }}</p>
       <nav><a :href="link">View Resources</a></nav>
@@ -13,7 +13,6 @@
 
 <script>
 export default {
-
   props: ['title', 'description', 'link'],
 };
 </script>
