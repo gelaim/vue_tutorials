@@ -1,15 +1,17 @@
 <template>
-  <BaseCard
-    ><BaseButton
-      @click="setSelectedTab('stored-resources')"
-      :mode="storedResourceButtonMode"
-      >Stored Resources</BaseButton
-    >
-    <BaseButton
-      @click="setSelectedTab('add-resource')"
-      :mode="addResourceButtonMode"
-      >Add Resource</BaseButton
-    ></BaseCard
+  <keep-alive>
+    <BaseCard
+      ><BaseButton
+        @click="setSelectedTab('stored-resources')"
+        :mode="storedResourceButtonMode"
+        >Stored Resources</BaseButton
+      >
+      <BaseButton
+        @click="setSelectedTab('add-resource')"
+        :mode="addResourceButtonMode"
+        >Add Resource</BaseButton
+      ></BaseCard
+    ></keep-alive
   >
   <component :is="selectedTab"></component>
 </template>
@@ -39,7 +41,11 @@ export default {
     };
   },
   provide() {
-    return { resources: this.storedResources };
+    return {
+      resources: this.storedResources,
+      addResource: this.addResource,
+      removeResource: this.removeResource,
+    };
   },
   computed: {
     storedResourceButtonMode() {
@@ -52,6 +58,20 @@ export default {
   methods: {
     setSelectedTab(tab) {
       this.selectedTab = tab;
+    },
+    addResource(title, description, url) {
+      const newResource = {
+        id: new Date().toISOString(),
+        title: title,
+        description: description,
+        link: url,
+      };
+      this.storedResources.unshift(newResource);
+      this.selectedTab = 'stored-resources';
+    },
+    removeResource(id) {
+      const resIndex = this.storedResources.findIndex((res) => res.id === id);
+      this.storedResources.splice(resIndex, 1);
     },
   },
 };
