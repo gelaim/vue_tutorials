@@ -94,7 +94,7 @@
       </div>
     </div>
     <div>
-      <RatingControl></RatingControl>
+      <RatingControl v-model="rating"></RatingControl>
     </div>
     <div>
       <button>Save Data</button>
@@ -110,6 +110,7 @@ export default {
 
   data() {
     return {
+      rating: null,
       userName: '',
       userAge: null,
       referrer: 'google',
@@ -127,6 +128,7 @@ export default {
       this.referrer = 'google';
       this.interest = [];
       this.how = null;
+      this.rating = null;
     },
     validateInput() {
       if (this.userName === '') {
