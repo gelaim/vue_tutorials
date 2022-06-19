@@ -94,13 +94,20 @@
       </div>
     </div>
     <div>
+      <RatingControl></RatingControl>
+    </div>
+    <div>
       <button>Save Data</button>
     </div>
   </form>
 </template>
 
 <script>
+import RatingControl from './RatingControl.vue';
+undefined;
 export default {
+  components: { RatingControl },
+
   data() {
     return {
       userName: '',
