@@ -24,7 +24,13 @@ const router = createRouter({
         },
       ],
     },
-    { path: '/users', components: { default: UsersList, footer: UserFooter } },
+    {
+      path: '/users',
+      components: { default: UsersList, footer: UserFooter },
+      beforeEnter(_, _2, next) {
+        next();
+      },
+    },
     { path: '/:notFound(.*)', component: NotFound },
   ],
   history: createWebHistory(),
