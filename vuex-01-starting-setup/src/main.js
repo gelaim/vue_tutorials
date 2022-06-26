@@ -4,7 +4,7 @@ import App from './App.vue';
 
 const store = createStore({
   state() {
-    return { counter: 0 };
+    return { counter: 0, isLoggedIn: false };
   },
   mutations: {
     increment(state) {
@@ -12,6 +12,9 @@ const store = createStore({
     },
     increase(state, payload) {
       state.counter = state.counter + payload.value;
+    },
+    setAuth(state, payload) {
+      state.isLoggedIn = payload.isAuth;
     },
   },
   getters: {
@@ -28,8 +31,17 @@ const store = createStore({
       }
       return finalCounter;
     },
+    isUserAuthenticated(state) {
+      return state.isLoggedIn;
+    },
   },
   actions: {
+    login(context) {
+      context.commit('setAuth', { isAuth: true });
+    },
+    logout(context) {
+      context.commit('setAuth', { isAuth: false });
+    },
     increment(context) {
       setTimeout(function () {
         context.commit('increment');
