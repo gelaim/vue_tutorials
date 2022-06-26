@@ -2,19 +2,29 @@ import { createApp } from 'vue';
 import { createStore } from 'vuex';
 import App from './App.vue';
 
-const store = createStore({
+const counterModule = {
   state() {
-    return { counter: 0, isLoggedIn: false };
+    return { counter: 0 };
   },
   mutations: {
     increment(state) {
       state.counter = state.counter + 2;
     },
     increase(state, payload) {
+      console.log(state);
       state.counter = state.counter + payload.value;
     },
-    setAuth(state, payload) {
-      state.isLoggedIn = payload.isAuth;
+  },
+  actions: {
+    increment(context) {
+      setTimeout(function () {
+        context.commit('increment');
+      }, 2000);
+    },
+    increase(context, payload) {
+      setTimeout(function () {
+        context.commit('increase', payload);
+      }, 2000);
     },
   },
   getters: {
@@ -31,6 +41,22 @@ const store = createStore({
       }
       return finalCounter;
     },
+  },
+};
+
+const store = createStore({
+  modules: {
+    numbers: counterModule,
+  },
+  state() {
+    return { isLoggedIn: false };
+  },
+  mutations: {
+    setAuth(state, payload) {
+      state.isLoggedIn = payload.isAuth;
+    },
+  },
+  getters: {
     isUserAuthenticated(state) {
       return state.isLoggedIn;
     },
@@ -41,16 +67,6 @@ const store = createStore({
     },
     logout(context) {
       context.commit('setAuth', { isAuth: false });
-    },
-    increment(context) {
-      setTimeout(function () {
-        context.commit('increment');
-      }, 2000);
-    },
-    increase(context, payload) {
-      setTimeout(function () {
-        context.commit('increase', payload);
-      }, 2000);
     },
   },
 });
