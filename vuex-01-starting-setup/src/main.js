@@ -18,7 +18,7 @@ const store = createStore({
     finalCounter(state) {
       return state.counter * 2;
     },
-    normalizedCounter(state, getters) {
+    normalizedCounter(_, getters) {
       const finalCounter = getters.finalCounter;
       if (finalCounter < 0) {
         return 0;
@@ -27,6 +27,18 @@ const store = createStore({
         return 100;
       }
       return finalCounter;
+    },
+  },
+  actions: {
+    increment(context) {
+      setTimeout(function () {
+        context.commit('increment');
+      }, 2000);
+    },
+    increase(context, payload) {
+      setTimeout(function () {
+        context.commit('increase', payload);
+      }, 2000);
     },
   },
 });
