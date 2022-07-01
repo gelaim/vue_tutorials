@@ -2,7 +2,7 @@
   <section>
     <base-card>
       <h2>Register a coach now!</h2>
-      <coach-form></coach-form
+      <coach-form @save-data="saveData"></coach-form
     ></base-card>
   </section>
 </template>
@@ -11,5 +11,12 @@ import BaseCard from '../../components/ui/BaseCard.vue';
 import CoachForm from '../../components/coaches/CoachForm.vue';
 export default {
   components: { CoachForm, BaseCard },
+
+  methods: {
+    saveData(data) {
+      this.$store.dispatch('coaches/registerCoach', data);
+      this.$router.replace('/coaches');
+    },
+  },
 };
 </script>
