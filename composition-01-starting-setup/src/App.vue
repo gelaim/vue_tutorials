@@ -6,14 +6,14 @@
 </template>
 
 <script>
-import { ref } from 'vue';
+import { reactive } from 'vue';
 
 export default {
   setup() {
-    const user = ref({ name: 'Thiago', age: 33 });
+    const user = reactive({ name: 'Thiago', age: 33 });
 
     setTimeout(function () {
-      user.value.name = 'Th';
+      user.name = 'Th';
     }, 2000);
     return { user: user };
   },
