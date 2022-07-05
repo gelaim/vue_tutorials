@@ -10,6 +10,10 @@ import { ref } from 'vue';
 export default {
   setup() {
     const uName = ref('Thiago');
+
+    setTimeout(function () {
+      uName.value = 'Th';
+    }, 2000);
     return { userName: uName };
   },
 };
