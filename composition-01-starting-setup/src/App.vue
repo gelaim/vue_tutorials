@@ -4,8 +4,8 @@
     <h3>{{ age }}</h3>
     <button @click="setAge">Change Age</button>
     <div>
-      <input type="text" placeholder="First name" @input="setFirstName" />
-      <input type="text" placeholder="Last name" @input="setLastName" />
+      <input type="text" placeholder="First name" v-model="firstName" />
+      <input type="text" placeholder="Last name" v-model="lastName" />
     </div>
   </section>
 </template>
@@ -16,28 +16,22 @@ import { ref, computed } from 'vue';
 export default {
   setup() {
     // const user = reactive({ name: 'Thiago', age: 33 });
-    const firtName = ref('');
+    const firstName = ref('');
     const lastName = ref('');
     const age = ref(22);
 
     function changeAge() {
       age.value = 36;
     }
-    function setLastName(event) {
-      lastName.value = event.target.value;
-    }
 
-    function setFirstName(event) {
-      firtName.value = event.target.value;
-    }
     const uName = computed(function () {
-      return firtName.value + ' ' + lastName.value;
+      return firstName.value + ' ' + lastName.value;
     });
     return {
       uName,
       age,
-      setFirstName,
-      setLastName,
+      firstName,
+      lastName,
       setAge: changeAge,
     };
   },
