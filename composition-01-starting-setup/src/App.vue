@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import { ref, computed } from 'vue';
+import { ref, computed, watch } from 'vue';
 
 export default {
   setup() {
@@ -19,6 +19,9 @@ export default {
     const firstName = ref('');
     const lastName = ref('');
     const age = ref(22);
+    watch(age, function (newValue, oldValue) {
+      console.log(oldValue), console.log(newValue);
+    });
 
     function changeAge() {
       age.value = 36;
